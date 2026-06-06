@@ -271,8 +271,6 @@ function stopCoinSystem() {
 
 function loadLesson() {
     lessonWords = lessons[currentLesson];
-    console.log("Lesson:", currentLesson + 1);
-console.log(lessonWords);
     wordIndex = 0;
     score = 0;
     totalTyped = 0;
