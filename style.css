@@ -1,0 +1,628 @@
+body {
+    margin: 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#dff, #ffffff);
+}
+
+h1 {
+    margin: 12px 0;
+    color: #333;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+select {
+    padding: 7px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.topStats {
+    width: 95%;
+    margin: 0 auto 8px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.topStats div {
+    background: white;
+    border: 2px solid #e0a0a0;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+.road {
+    position: relative;
+    width: 92%;
+    height: 520px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 3px solid black;
+    background: linear-gradient(#87ceeb 0%, #87ceeb 48%, #2e8b57 48%, #2e8b57 64%, #222 64%, #111 100%);
+}
+
+.road::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 360px;
+    width: 300%;
+    height: 10px;
+    background: repeating-linear-gradient(to right, white 0px, white 60px, transparent 60px, transparent 120px);
+    animation: roadMove var(--roadSpeed, 1s) linear infinite;
+    z-index: 2;
+}
+
+@keyframes roadMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-120px); }
+}
+
+.skyDecor {
+    position: absolute;
+    font-size: 40px;
+    z-index: 1;
+}
+
+.cloud1 { top: 60px; left: 20%; }
+.cloud2 { top: 90px; left: 65%; }
+
+.sun {
+    position: absolute;
+    top: 35px;
+    right: 30px;
+    font-size: 45px;
+    z-index: 2;
+}
+
+#moon {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    font-size: 45px;
+    display: none;
+    z-index: 2;
+}
+
+.tree {
+    position: absolute;
+    bottom: 185px;
+    font-size: 38px;
+    z-index: 3;
+    animation: decorMove 18s linear infinite;
+}
+
+.tree1 { left: 100%; }
+.tree2 { left: 180%; }
+.tree3 { left: 260%; }
+
+.carDecor,
+.animalDecor {
+    position: absolute;
+    bottom: 55px;
+    font-size: 42px;
+    z-index: 4;
+    animation: decorMove 25s linear infinite;
+}
+
+.car1 { left: 120%; }
+.animal1 { left: 300%; }
+
+@keyframes decorMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-700vw); }
+}
+
+#characterBox {
+    position: absolute;
+    left: 10px;
+    bottom: 120px;
+    width: 300px;
+    height: 300px;
+    z-index: 7;
+}
+
+#runnerImg {
+    width: 500px;
+
+}
+
+#emojiChar {
+    font-size: 75px;
+    display: none;
+    line-height: 300px;
+    text-align: center;
+}
+
+.finishGate {
+    position: absolute;
+    right: 10px;
+    bottom: 120px;
+    width: 300px;
+    height: 240px;
+    z-index: 20;
+}
+
+.finishPole {
+    position: absolute;
+    width: 12px;
+    height: 180px;
+    background: #c0c0c0;
+    bottom: 0;
+    border-radius: 5px;
+}
+
+.leftPole {
+    left: 20px;
+    bottom: 70px;
+}
+
+.rightPole {
+    right: 10px;
+    bottom: -100px;
+    height: 350px;
+}
+
+.finishBanner {
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    width: 280px;
+    height: 60px;
+    z-index: 1;
+    background: repeating-linear-gradient(
+        45deg,
+        black 0 10px,
+        white 10px 20px
+    );
+    color: white;
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    line-height: 60px;
+    border: 3px solid black;
+    transform: skew(-30deg);
+    text-shadow: 2px 2px 2px black;
+}
+
+#wordLine {
+    width: 90%;
+    margin: 15px auto;
+    padding: 15px;
+    min-height: 45px;
+    border: 3px solid red;
+    background: white;
+    color: black;
+    font-size: 25px;
+    text-align: left;
+    box-sizing: border-box;
+    line-height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.activeWord {
+    font-weight: bold;
+}
+
+#input {
+    width: 55%;
+    padding: 12px;
+    font-size: 20px;
+    text-align: center;
+    border: 2px solid #e0a0a0;
+    position: relative;
+    z-index: 10;
+}
+
+button {
+    padding: 9px 20px;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid #999;
+}
+
+#message {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #e91e63;
+}
+
+.hidden {
+    display: none;
+}
+
+#popup,
+#lessonWindow {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+#popup.hidden,
+#lessonWindow.hidden {
+    display: none;
+}
+
+.popupBox,
+.lessonBox {
+    width: 360px;
+    max-width: 90%;
+    background: white;
+    border: 4px solid #e91e63;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 20px;
+    box-shadow: 0 0 30px black;
+}
+
+.popupBox h2,
+.lessonBox h2 {
+    color: #e91e63;
+}
+
+#lessonGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.lessonBtn {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #ddffff;
+    border: 2px solid #e91e63;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.lessonBtn:hover {
+    background: #e91e63;
+    color: white;
+}
+
+.currentLessonBtn {
+    background: #e91e63;
+    color: white;
+}
+
+.completedLessonBtn {
+    background: #2ecc71;
+    color: white;
+    border: 2px solid #27ae60;
+    font-weight: bold;
+}
+
+.coin {
+    position: absolute;
+    font-size: 38px;
+    bottom: 115px;
+    left: 95%;
+    z-index: 90;
+    display: none;
+}
+
+.coin.collected {
+    display: none;
+}
+
+.dayMode {
+    background: linear-gradient(
+        #87ceeb 0%,
+        #87ceeb 48%,
+        #2e8b57 48%,
+        #2e8b57 64%,
+        #222 64%,
+        #111 100%
+    );
+}
+
+.nightMode {
+    background: linear-gradient(
+        #06142b 0%,
+        #10264a 50%,
+        #173d25 50%,
+        #173d25 64%,
+        #222 64%,
+        #111 100%
+    );
+}
+
+#airplane {
+    position: absolute;
+    top: 80px;
+    left: -250px;
+    font-size: 55px;
+    z-index: 20;
+    display: none;
+}
+
+#helicopter {
+    position: absolute;
+    top: 50px;
+    left: -250px;
+    font-size: 50px;
+    z-index: 20;
+    display: none;
+}
+
+.smoke {
+    position: absolute;
+    font-size: 18px;
+    color: white;
+    z-index: 15;
+    pointer-events: none;
+    opacity: 0.9;
+    animation: smokeFade 3s linear forwards;
+}
+
+@keyframes smokeFade {
+    from {
+        opacity: 0.9;
+        transform: translateX(0) translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50px) translateY(-25px);
+    }
+}
+
+.star {
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    display: none;
+    animation: starBlink 1.5s infinite alternate;
+}
+
+@keyframes starBlink {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+.mountain {
+    position: absolute;
+    font-size: 120px;
+    bottom: 190px;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.mountain1 {
+    left: 100%;
+    animation: mountainLoop 47s linear infinite;
+}
+
+.mountain2 {
+    left: 220%;
+    animation: mountainLoop 75s linear infinite;
+}
+
+@keyframes mountainLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-400vw); }
+}
+
+.bird {
+    position: absolute;
+    font-size: 55px;
+    z-index: 80;
+    animation: birdFly 25s linear infinite;
+    filter: drop-shadow(2px 2px 2px black);
+}
+
+.bird1 { top: 50px; left: -100px; }
+.bird2 { top: 20px; left: -300px; animation-delay: 4s; }
+.bird3 { top: 50px; left: -500px; animation-delay: 8s; }
+
+@keyframes birdFly {
+    from { transform: translateX(0) scaleX(-1); }
+    to { transform: translateX(1600px) scaleX(-1); }
+}
+
+.jump {
+    animation: runnerJump 0.6s ease !important;
+}
+
+@keyframes runnerJump {
+    0% { transform: translateY(0) scale(1); }
+    40% { transform: translateY(-120px) scale(1.05); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 700px) {
+    .road { width: 96%; height: 360px; }
+    .road::after { top: 255px; }
+    #characterBox { width: 85px; bottom: 50px; }
+    #runnerImg { width: 85px; }
+    #emojiChar { font-size: 55px; line-height: 85px; }
+    .tree { bottom: 125px; font-size: 32px; }
+    .carDecor, .animalDecor { bottom: 38px; font-size: 34px; }
+    #wordLine { font-size: 20px; line-height: 32px; }
+    #input { width: 85%; font-size: 18px; }
+    #lessonGrid { grid-template-columns: repeat(4, 1fr); }
+    .coin { bottom: 80px; font-size: 30px; }
+}
+.lockedLessonBtn{
+    background:#999 !important;
+    color:white !important;
+    border:2px solid #555 !important;
+    cursor:not-allowed !important;
+    opacity:0.6;
+}
+
+.firework{
+    position:absolute;
+    font-size:42px;
+    z-index:200;
+    animation: fireworkBlast 1.8s ease-out forwards;
+    pointer-events:none;
+}
+
+@keyframes fireworkBlast{
+    0%{
+        transform:scale(0.2) translateY(80px);
+        opacity:0;
+    }
+    40%{
+        transform:scale(1.4) translateY(-40px);
+        opacity:1;
+    }
+    100%{
+        transform:scale(0.7) translateY(-120px);
+        opacity:0;
+    }
+}
+.road.pauseDecor .tree,
+.road.pauseDecor .mountain,
+.road.pauseDecor .carDecor,
+.road.pauseDecor .animalDecor {
+    animation-play-state: paused !important;
+}
+@media (max-width: 768px) {
+
+    h1{
+        font-size: 26px;
+    }
+
+    .controls{
+        font-size: 14px;
+        gap: 8px;
+    }
+
+    .topStats{
+        font-size: 13px;
+    }
+
+    .road{
+        width: 100%;
+        height: 350px;
+    }
+
+    #characterBox img{
+        width: 180px !important;
+    }
+
+    #wordLine{
+        font-size: 20px;
+    }
+
+    #input{
+        width: 95%;
+        font-size: 18px;
+    }
+
+    button,
+    select{
+        font-size: 14px;
+    }
+
+@media (max-width: 768px) {
+    .road {
+        width: 100%;
+        height: 330px;
+    }
+}
+    #characterBox {
+        bottom: 45px !important;
+        width: 180px !important;
+        height: 180px !important;
+    }
+
+    #runnerImg {
+        width: 180px !important;
+    }
+
+    #wordLine {
+        width: 95%;
+        font-size: 18px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #input {
+        width: 90%;
+        font-size: 18px;
+    }
+    .mountain {
+    bottom: 120px !important;
+    font-size: 80px !important;
+}
+.finish{
+    transform: scale(0.50) !important;
+    transform-origin: bottom right;
+}
+.mountain1 {
+    left: 90% !important;
+}
+
+.mountain2 {
+    left: 180% !important;
+}
+.finishGate {
+    right: -10px !important;
+    bottom: 70px !important;
+    transform: none !important;
+}
+.finishGate img,
+.finishBanner {
+    width: 100px !important;
+    height: auto !important;
+    position: relative !important;
+    top: 10px;
+    left: 190px !important;
+}
+
+
+.finishPole {
+    height: 140px !important;
+    bottom: 55px !important;
+    
+}
+.finishPole.right {
+    height: 140px !important;
+    bottom: 55px !important;
+}
+
+.finishPole.left {
+    top: auto !important;
+    bottom: 55px !important;
+    left: 110px !important;
+    right: auto !important;
+}
+.finishGate .finishPole:first-of-type {
+    transform: translateX(80px) !important;
+}
+.rightPole {
+    height: 300px !important;
+    bottom: -80px !important;
+    right: 20px !important;
+}
+.leftPole {
+    height: 140px !important;
+    left: 120px !important;
+}
+}

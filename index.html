@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Typing Race</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🏃 Lesson Typing Race</h1>
+
+<div class="controls">
+    <label>Difficulty:
+        <select id="difficulty" onchange="changeDifficulty()">
+            <option value="beginner">Beginner</option>
+            <option value="medium">Medium</option>
+            <option value="advanced">Advanced</option>
+        </select>
+    </label>
+
+    <label>Character:
+        <select id="character" onchange="changeCharacter()">
+            <option value="runner">Runner</option>
+            <option value="runner2">🏃‍♀️ Runner 2 🔒</option>
+            <option value="runner3">🏃‍♀️ Runner 3 🔒</option>
+            <option value="runner4">🐎 Horse Runner 🔒</option>
+        </select>
+    </label>
+
+    <button onclick="openLessonWindow()">Select Lesson</button>
+    <button onclick="goToFirstLesson()">First Lesson</button>
+</div>
+
+<div class="topStats">
+    <div>Lesson: <span id="lesson">1</span>/50</div>
+    <div>Word: <span id="wordCount">0</span></div>
+    <div>Score: <span id="score">0</span></div>
+    <div>WPM: <span id="wpm">0</span></div>
+    <div>Accuracy: <span id="accuracy">100</span>%</div>
+    <div>High: <span id="highScore">0</span></div>
+</div>
+
+<div class="road" id="road">
+
+    <div class="skyDecor cloud1">☁️</div>
+    <div class="skyDecor cloud2">☁️</div>
+
+    <div class="sun" id="sun">☀️</div>
+    <div class="moon" id="moon">🌙</div>
+
+    <div class="mountain mountain1">⛰️</div>
+    <div class="mountain mountain2">🏔️</div>
+
+    <div class="bird bird1">🐦</div>
+    <div class="bird bird2">🕊️</div>
+    <div class="bird bird3">🦜</div>
+
+    <div id="airplane">🛫</div>
+    <div id="helicopter">🚁</div>
+
+    <div class="tree tree1">🌳</div>
+    <div class="tree tree2">🌲</div>
+    <div class="tree tree3">🌴</div>
+
+    <div class="carDecor car1">🚗</div>
+    <div class="animalDecor animal1">🐕</div>
+
+    <div id="characterBox">
+        <img src="runner.gif" id="runnerImg">
+        <span id="emojiChar"></span>
+    </div>
+
+    <div class="coin">🪙</div>
+    <div class="coin">🪙</div>
+    <div class="coin">🪙</div>
+    <div class="coin">🪙</div>
+    <div class="coin">🪙</div>
+
+    <div class="finishGate">
+        <div class="finishPole leftPole"></div>
+        <div class="finishBanner">FINISH</div>
+        <div class="finishPole rightPole"></div>
+    </div>
+
+</div>
+
+<div id="wordLine">Loading lesson...</div>
+
+<input type="text" id="input" placeholder="Type word here" autocomplete="off">
+
+<br><br>
+
+<button onclick="restartCourse()">Restart Course</button>
+
+<div id="message"></div>
+
+<div id="popup" class="hidden">
+    <div class="popupBox">
+        <h2 id="popupTitle">Lesson Complete!</h2>
+        <p>Lesson Score: <span id="popupScore">0</span></p>
+        <p>WPM: <span id="popupWpm">0</span></p>
+        <p>Accuracy: <span id="popupAccuracy">0</span>%</p>
+        <p>Your Text Mistakes: <span id="popupMistakes">0</span></p>
+        <p id="unlockRule">Next lesson will be unlocked if you make 5 or fewer mistakes.</p>
+        <p>Rank: <span id="popupRank">Beginner</span></p>
+        <button onclick="nextLesson()">OK</button>
+    </div>
+</div>
+
+<div id="lessonWindow" class="hidden">
+    <div class="lessonBox">
+        <h2>Select Lesson</h2>
+        <div id="lessonGrid"></div>
+        <button onclick="closeLessonWindow()">Close</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
