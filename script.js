@@ -9,7 +9,25 @@ helicopterSound.volume = 0.3;
 airplaneSound.volume = 0.3;
 
 const beginnerWords = [
-"apple","banana","mango","orange","grape","lemon","coconut","papaya","melon","cherry",
+    "apple","banana","orange","grape","mango",
+"school","teacher","student","book","pen",
+"river","mountain","forest","garden","flower",
+"rice","oil","salt","sugar","flour","wheat","bread","butter","cheese","milk",
+"cream","yogurt","egg","chicken","mutton","beef","fish","shrimp","crab","sausage",
+"ham","bacon","tea","coffee","juice","water","cola","sprite","fanta","energy",
+"honey","jam","ketchup","mayonnaise","vinegar","sauce","pickle","biscuit","cookie","cracker",
+"cake","chocolate","candy","chips","noodle","pasta","spaghetti","macaroni","pizza","burger",
+"sandwich","apple","banana","orange","mango","grape","papaya","melon","pear","peach",
+"lemon","lime","onion","potato","tomato","carrot","cabbage","spinach","lettuce","cucumber",
+"pumpkin","bean","pea","garlic","ginger","pepper","chili","turmeric","coriander","cumin",
+"cardamom","clove","cinnamon","almond","cashew","walnut","peanut","raisin","dates","coconut",
+"oats","cereal","corn","ricecake","icecream","popcorn","muffin","donut","waffle","pancake",
+"doctor","nurse","driver","pilot","farmer",
+"king","queen","baby","boy","girl","man","woman","friend","family","home",
+"garden","flower","forest","jungle","desert","rain","snow","storm","cloud","wind",
+"summer","winter","spring","autumn","morning","evening","night","today","tomorrow","yesterday",
+"doctor","nurse","hospital","police","farmer","driver","pilot","engineer","artist","writer",
+"mango","orange","grape","lemon","coconut","papaya","melon","cherry",
 "dog","cat","tiger","lion","horse","monkey","elephant","rabbit","zebra","panda",
 "computer","mouse","keyboard","mobile","laptop","monitor","router","internet","browser","camera",
 "school","teacher","student","book","river","mountain","ocean","city","village","planet",
@@ -253,6 +271,8 @@ function stopCoinSystem() {
 
 function loadLesson() {
     lessonWords = lessons[currentLesson];
+    console.log("Lesson:", currentLesson + 1);
+console.log(lessonWords);
     wordIndex = 0;
     score = 0;
     totalTyped = 0;
@@ -270,7 +290,7 @@ function loadLesson() {
     accuracyDisplay.textContent = "100";
 
     characterBox.style.left = "20px";
-    characterBox.style.bottom = "120px";
+    characterBox.style.bottom = "100px";
     input.value = "";
     input.disabled = false;
     message.textContent = "";
@@ -501,7 +521,7 @@ function changeCharacter() {
         runnerImg.style.display = "block";
         emojiChar.style.display = "none";
         emojiChar.style.transform = "scaleX(1)";
-      characterBox.style.bottom = "120px";
+      characterBox.style.bottom = "50px";
 runnerImg.style.width = "330px";  
     }
     if (value === "runner2") {
@@ -548,7 +568,7 @@ if (value === "runner4") {
     runnerImg.src = "runner4.gif";
     runnerImg.style.display = "block";
     emojiChar.style.display = "none";
-    characterBox.style.bottom = "-30px";
+    characterBox.style.bottom = "120px";
 runnerImg.style.width = "330px";
 }
 
@@ -701,6 +721,9 @@ function nextLesson() {
     } else {
         loadLesson();
     }
+    setTimeout(function () {
+    input.focus();
+}, 100);
 }
  
 function showDiwaliFireworks() {
