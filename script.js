@@ -519,7 +519,7 @@ function changeCharacter() {
         runnerImg.style.display = "block";
         emojiChar.style.display = "none";
         emojiChar.style.transform = "scaleX(1)";
-      characterBox.style.bottom = "50px";
+      characterBox.style.bottom = "100px";
 runnerImg.style.width = "330px";  
     }
     if (value === "runner2") {
@@ -566,7 +566,7 @@ if (value === "runner4") {
     runnerImg.src = "runner4.gif";
     runnerImg.style.display = "block";
     emojiChar.style.display = "none";
-    characterBox.style.bottom = "120px";
+    characterBox.style.bottom = "20px";
 runnerImg.style.width = "330px";
 }
 
@@ -673,11 +673,19 @@ input.addEventListener("input", function () {
         playSound(correctSound);
 
         characterBox.style.transition = "bottom 0.25s ease";
-        characterBox.style.bottom = "120px";
+        let normalBottom = "100px";
+let jumpBottom = "170px";
 
-        setTimeout(function () {
-            characterBox.style.bottom = "120px";
-        }, 250);
+if (characterSelect.value === "runner4") {
+    normalBottom = "10px";
+    jumpBottom = "70px";
+}
+
+characterBox.style.bottom = jumpBottom;
+
+setTimeout(function () {
+    characterBox.style.bottom = normalBottom;
+}, 250);
 
         score++;
         wordIndex++;
@@ -685,7 +693,9 @@ input.addEventListener("input", function () {
         scoreDisplay.textContent = score;
         wordCountDisplay.textContent = wordIndex;
 
-        position += 45;
+        position += 30;
+        let maxPosition = road.offsetWidth - 230;
+if (position > maxPosition) position = maxPosition;
         characterBox.style.left = position + "px";
 
         input.value = "";
@@ -850,7 +860,7 @@ function flyPlane() {
     airplaneSound.play().catch(function(){});
 
     airplane.style.left = "-250px";
-    airplane.style.top = "60px";
+    airplane.style.top = "20px";
     airplane.style.transform = "rotate(50deg)";
 
     let x = -250;
@@ -865,7 +875,7 @@ function flyPlane() {
             smoke.className = "smoke";
             smoke.textContent = "☁️";
             smoke.style.left = (x - 40) + "px";
-            smoke.style.top = "95px";
+            smoke.style.top = "60px";
             road.appendChild(smoke);
 
             setTimeout(function () {
@@ -942,31 +952,89 @@ setInterval(function () {
 window.onload = function () {
     input.focus();
 };
+let treeMode = "";
+
+function setTreeSpeed(rate, mode) {
+    if (treeMode === mode) return;
+    treeMode = mode;
+
+    document.querySelectorAll(".tree").forEach(tree => {
+        tree.getAnimations().forEach(anim => {
+            anim.playbackRate = rate;
+        });
+    });
+}
+
+let mountainMode = "";
+
+function setMountainSpeed(rate, mode) {
+    if (mountainMode === mode) return;
+    mountainMode = mode;
+
+    document.querySelectorAll(".mountain1, .mountain2").forEach(mountain => {
+        mountain.getAnimations().forEach(anim => {
+            anim.playbackRate = rate;
+        });
+    });
+}
+
 setInterval(() => {
     let idleTime = Date.now() - lastKeyTime;
+if (idleTime < 3000) {
+    setTreeSpeed(1, "fast");
+    setMountainSpeed(3, "fast");
+    road.classList.remove("pausedDecor");
+    road.style.setProperty("--roadSpeed", "0.2s");
 
-    if (idleTime < 1000) {
-        road.classList.remove("pauseDecor");
-        road.style.setProperty("--roadSpeed", "0.2s");
-
-        if (characterSelect.value === "runner") {
-            runnerImg.src = "runner.gif";
-        }
+   if (characterSelect.value === "runner") {
+    if (!runnerImg.src.includes("runner.gif")) {
+        runnerImg.src = "runner.gif";
     }
-    else if (idleTime < 3000) {
-        road.classList.remove("pauseDecor");
-        road.style.setProperty("--roadSpeed", "1s");
-
-        if (characterSelect.value === "runner") {
-            runnerImg.src = "runner.gif";
-        }
+}
+    if (characterSelect.value === "runner2") {
+    if (!runnerImg.src.includes("runner2.gif")) {
+        runnerImg.src = "runner2.gif";
     }
-    else {
-        road.style.setProperty("--roadSpeed", "4s");
-
-        if (characterSelect.value === "runner") {
-            runnerImg.src = "runnerwalk.gif";
-            road.classList.add("pauseDecor");
-        }
+}
+if (characterSelect.value === "runner3") {
+    if (!runnerImg.src.includes("runner3.gif")) {
+        runnerImg.src = "runner3.gif";
     }
-}, 200);
+}
+
+if (characterSelect.value === "runner4") {
+    if (!runnerImg.src.includes("runner4.gif")) {
+        runnerImg.src = "runner4.gif";
+    }
+}
+
+} else {
+    setTreeSpeed(0.25, "slow");
+    setMountainSpeed(0.25, "slow");
+    road.style.setProperty("--roadSpeed", "4s");
+
+ if (characterSelect.value === "runner") {
+    if (!runnerImg.src.includes("runnerwalk.gif")) {
+        runnerImg.src = "runnerwalk.gif";
+    }
+} 
+if (characterSelect.value === "runner2") {
+    if (!runnerImg.src.includes("runnerwalk2.gif")) {
+        runnerImg.src = "runnerwalk2.gif";
+    }
+}
+if (characterSelect.value === "runner3") {
+    if (!runnerImg.src.includes("runnerwalk3.gif")) {
+        runnerImg.src = "runnerwalk3.gif";
+    }
+}
+
+if (characterSelect.value === "runner4") {
+    if (!runnerImg.src.includes("runnerwalk4.gif")) {
+        runnerImg.src = "runnerwalk4.gif";
+    }
+}
+    road.classList.add("pausedDecor");
+}
+    }
+,200);

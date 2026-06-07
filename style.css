@@ -100,22 +100,23 @@ select {
 .tree {
     position: absolute;
     bottom: 185px;
-    font-size: 38px;
-    z-index: 3;
-    animation: decorMove 18s linear infinite;
+    font-size: 150px;
+    z-index: 2;
+   animation: decorMove 18s linear infinite;
 }
 
 .tree1 { left: 100%; }
-.tree2 { left: 180%; }
-.tree3 { left: 260%; }
+	tree2 { left: 180%; }
+	tree3 { left: 260%; }
 
 .carDecor,
 .animalDecor {
     position: absolute;
     bottom: 55px;
-    font-size: 42px;
+    font-size: 200px;
     z-index: 4;
-    animation: decorMove 25s linear infinite;
+    animation: decorMove 18s linear infinite;
+    z-index: 31;
 }
 
 .car1 { left: 120%; }
@@ -128,7 +129,7 @@ select {
 
 #characterBox {
     position: absolute;
-    left: 10px;
+    left: 5px;
     bottom: 100px;
     width: 300px;
     height: 300px;
@@ -153,7 +154,7 @@ select {
     bottom: 120px;
     width: 300px;
     height: 240px;
-    z-index: 20;
+    z-index: 33px;
 }
 
 .finishPole {
@@ -166,23 +167,25 @@ select {
 }
 
 .leftPole {
-    left: 20px;
+    left: 70px;
     bottom: 70px;
+    z-index: 2;
 }
 
 .rightPole {
     right: 10px;
     bottom: -100px;
     height: 350px;
+    z-index: 32;
 }
 
 .finishBanner {
     position: absolute;
     top: -10px;
-    left: 5px;
-    width: 280px;
+    left: 55px;
+    width: 220px;
     height: 60px;
-    z-index: 1;
+    z-index: 33;
     background: repeating-linear-gradient(
         45deg,
         black 0 10px,
@@ -190,7 +193,7 @@ select {
     );
     color: white;
     font-weight: bold;
-    font-size: 32px;
+    font-size: 30px;
     text-align: center;
     line-height: 60px;
     border: 3px solid black;
@@ -206,7 +209,7 @@ select {
     border: 3px solid red;
     background: white;
     color: black;
-    font-size: 25px;
+    font-size: 20px;
     text-align: left;
     box-sizing: border-box;
     line-height: 40px;
@@ -353,9 +356,9 @@ button {
 
 #airplane {
     position: absolute;
-    top: 80px;
+    top: 20px;
     left: -250px;
-    font-size: 55px;
+    font-size: 75px;
     z-index: 20;
     display: none;
 }
@@ -364,7 +367,7 @@ button {
     position: absolute;
     top: 50px;
     left: -250px;
-    font-size: 50px;
+    font-size: 60px;
     z-index: 20;
     display: none;
 }
@@ -435,8 +438,8 @@ button {
 }
 
 .bird1 { top: 50px; left: -100px; }
-.bird2 { top: 20px; left: -300px; animation-delay: 4s; }
-.bird3 { top: 50px; left: -500px; animation-delay: 8s; }
+.bird2 { top: 20px; left: -300px; animation-delay: 6s; }
+.bird3 { top: 50px; left: -500px; animation-delay: 10s; }
 
 @keyframes birdFly {
     from { transform: translateX(0) scaleX(-1); }
