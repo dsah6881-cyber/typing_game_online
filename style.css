@@ -3,6 +3,7 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     background: linear-gradient(#dff, #ffffff);
+    padding-bottom: 10px;
 }
 
 h1 {
@@ -13,11 +14,12 @@ h1 {
 .controls {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+    gap: 8px;
+    flex-wrap: nowrap;
+    align-items: center;
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 select {
@@ -47,18 +49,19 @@ select {
 .road {
     position: relative;
     width: 92%;
-    height: 520px;
+    height: 620px;
     margin: 0 auto;
     overflow: hidden;
     border: 3px solid black;
     background: linear-gradient(#87ceeb 0%, #87ceeb 48%, #2e8b57 48%, #2e8b57 64%, #222 64%, #111 100%);
+    margin-bottom: 5px;
 }
 
 .road::after {
     content: "";
     position: absolute;
     left: 0;
-    top: 360px;
+    top: 460px;
     width: 300%;
     height: 10px;
     background: repeating-linear-gradient(to right, white 0px, white 60px, transparent 60px, transparent 120px);
@@ -99,7 +102,7 @@ select {
 
 .tree {
     position: absolute;
-    bottom: 185px;
+    bottom: 220px;
     font-size: 150px;
     z-index: 2;
    animation: decorMove 18s linear infinite;
@@ -116,7 +119,7 @@ select {
     font-size: 200px;
     z-index: 4;
     animation: decorMove 18s linear infinite;
-    z-index: 31;
+    z-index: 41;
 }
 
 .car1 { left: 120%; }
@@ -154,21 +157,21 @@ select {
     bottom: 120px;
     width: 300px;
     height: 240px;
-    z-index: 33px;
+    z-index: 51px;
 }
 
 .finishPole {
     position: absolute;
     width: 12px;
-    height: 180px;
+    height: 100px;
     background: #c0c0c0;
     bottom: 0;
     border-radius: 5px;
 }
 
 .leftPole {
-    left: 70px;
-    bottom: 70px;
+    left: 100px;
+    bottom: 100px;
     z-index: 2;
 }
 
@@ -176,16 +179,16 @@ select {
     right: 10px;
     bottom: -100px;
     height: 350px;
-    z-index: 32;
+    z-index: 50;
 }
 
 .finishBanner {
     position: absolute;
     top: -10px;
-    left: 55px;
-    width: 220px;
+    left: 95px;
+    width: 190px;
     height: 60px;
-    z-index: 33;
+    z-index: 51;
     background: repeating-linear-gradient(
         45deg,
         black 0 10px,
@@ -203,13 +206,13 @@ select {
 
 #wordLine {
     width: 90%;
-    margin: 15px auto;
+    margin: 0px auto;
     padding: 15px;
     min-height: 45px;
     border: 3px solid red;
     background: white;
     color: black;
-    font-size: 20px;
+    font-size: 30px;
     text-align: left;
     box-sizing: border-box;
     line-height: 40px;
@@ -231,6 +234,7 @@ select {
     border: 2px solid #e0a0a0;
     position: relative;
     z-index: 10;
+    margin-top: 5px;
 }
 
 button {
@@ -322,9 +326,9 @@ button {
 .coin {
     position: absolute;
     font-size: 38px;
-    bottom: 115px;
+    bottom: 150px;
     left: 95%;
-    z-index: 90;
+    z-index: 40;
     display: none;
 }
 
@@ -334,23 +338,27 @@ button {
 
 .dayMode {
     background: linear-gradient(
-        #87ceeb 0%,
-        #87ceeb 48%,
-        #2e8b57 48%,
-        #2e8b57 64%,
-        #222 64%,
-        #111 100%
+       #87ceeb 0%,
+#87ceeb 48%,
+#2e8b57 48%,
+#2e8b57 64%,
+#222 64%,
+#111 92%,
+#2e8b57 92%,
+#2e8b57 100%
     );
 }
 
 .nightMode {
     background: linear-gradient(
         #06142b 0%,
-        #10264a 50%,
-        #173d25 50%,
-        #173d25 64%,
-        #222 64%,
-        #111 100%
+#10264a 50%,
+#173d25 50%,
+#173d25 64%,
+#222 64%,
+#111 92%,
+#173d25 92%,
+#173d25 100%
     );
 }
 
@@ -409,7 +417,7 @@ button {
 .mountain {
     position: absolute;
     font-size: 120px;
-    bottom: 190px;
+    bottom: 220px;
     z-index: 1;
     opacity: 0.9;
 }
@@ -464,7 +472,7 @@ button {
     #emojiChar { font-size: 55px; line-height: 85px; }
     .tree { bottom: 125px; font-size: 32px; }
     .carDecor, .animalDecor { bottom: 38px; font-size: 34px; }
-    #wordLine { font-size: 20px; line-height: 32px; }
+    #wordLine { font-size: 25px; line-height: 32px; }
     #input { width: 85%; font-size: 18px; }
     #lessonGrid { grid-template-columns: repeat(4, 1fr); }
     .coin { bottom: 80px; font-size: 30px; }
@@ -505,6 +513,27 @@ button {
 .road.pauseDecor .animalDecor {
     animation-play-state: paused !important;
 }
+.topBar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    flex-wrap:nowrap;
+}
+
+.controls{
+    margin-bottom:0;
+    gap:8px;
+    font-size:14px;
+}
+
+.topStats{
+    margin:0;
+    width:auto;
+    gap:6px;
+    flex-wrap:nowrap;
+    font-size:13px;
+}
 @media (max-width: 768px) {
 
     h1{
@@ -530,7 +559,7 @@ button {
     }
 
     #wordLine{
-        font-size: 20px;
+        font-size: 25px;
     }
 
     #input{
@@ -561,7 +590,7 @@ button {
 
     #wordLine {
         width: 95%;
-        font-size: 18px;
+        font-size: 25px;
         overflow-x: auto;
         white-space: nowrap;
     }
@@ -628,4 +657,23 @@ button {
     height: 140px !important;
     left: 120px !important;
 }
+}
+@media (max-width: 768px) {
+  body {
+    zoom: 0.78;
+    overflow-x: hidden;
+  }
+
+  .road {
+    width: 92% !important;
+  }
+
+  #wordLine {
+    width: 90% !important;
+    font-size: 20px !important;
+  }
+
+  #input {
+    width: 55% !important;
+  }
 }

@@ -223,6 +223,13 @@ function spawnCoin() {
     const coins = document.querySelectorAll(".coin");
 
     if (coins.length === 0 || !popup.classList.contains("hidden")) return;
+    if (
+    activeCoin &&
+    activeCoin.style.display === "block" &&
+    !activeCoin.classList.contains("collected")
+) {
+    return;
+}
 
     if (coinMoveTimer) clearInterval(coinMoveTimer);
 
