@@ -535,9 +535,15 @@ button {
     font-size:13px;
 }
 @media (max-width: 768px) {
-    #difficulty{
-    width: 120px;
+  #difficulty{
+    width: 140px !important;
+    min-width: 140px !important;
 }
+
+#character{
+    width: 160px !important;
+    min-width: 160px !important;
+} 
 
     h1{
         font-size: 26px;
