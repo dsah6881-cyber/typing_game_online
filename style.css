@@ -661,10 +661,12 @@ button {
 }
 }
 @media (max-width: 768px) {
-  body {
-    zoom: 0.72;
+ body{
+    transform: scale(0.72);
+    transform-origin: top left;
+    width: 139%;
     overflow-x: hidden;
-  }
+}
   .topbar{
     width: 100vw !important;
     margin-left: 0 !important;
@@ -680,9 +682,11 @@ button {
 
 
 
-  .road {
+  .road{
     width: 92% !important;
-  }
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
 
   #wordLine {
     width: 90% !important;
