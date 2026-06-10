@@ -1045,3 +1045,22 @@ if (characterSelect.value === "runner4") {
 }
     }
 ,200);
+const bgMusic = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+let musicPlaying = false;
+window.onload = function() {
+    bgMusic.play();
+}
+
+function toggleMusic() {
+    if (musicPlaying) {
+        bgMusic.pause();
+        musicBtn.textContent = "🎵 Music ON";
+    } else {
+        bgMusic.play();
+        musicBtn.textContent = "🔇 Music OFF";
+    }
+
+    musicPlaying = !musicPlaying;
+}
