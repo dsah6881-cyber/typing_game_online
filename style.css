@@ -662,9 +662,7 @@ button {
 }
 @media (max-width: 768px) {
  body{
-    transform: scale(0.65) !important;
-    transform-origin: top left;
-    width: 160%;
+   
     overflow-x: hidden;
 }
   .topbar{
@@ -675,7 +673,7 @@ button {
     overflow: visible !important;
 }
 
-controls{
+.controls{
     display:flex !important;
     flex-wrap:wrap !important;
     justify-content:center !important;
