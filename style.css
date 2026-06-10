@@ -666,11 +666,12 @@ button {
     overflow-x: hidden;
 }
   .topbar{
-    width: 139% !important;
+    width: 100% !important;
     margin-left: 0 !important;
     transform: none !important;
     justify-content: center !important;
     overflow: visible !important;
+    flex-wrap: wrap !important;
 }
 
 .controls{
