@@ -535,15 +535,7 @@ button {
     font-size:13px;
 }
 @media (max-width: 768px) {
-  #difficulty{
-    width: 140px !important;
-    min-width: 140px !important;
-}
-
-#character{
-    width: 160px !important;
-    min-width: 160px !important;
-} 
+ 
 
     h1{
         font-size: 26px;
@@ -582,6 +574,15 @@ button {
     }
 
 @media (max-width: 768px) {
+     #difficulty{
+    width: 140px !important;
+    min-width: 140px !important;
+}
+
+#character{
+    width: 160px !important;
+    min-width: 160px !important;
+} 
     .road {
         width: 100%;
         height: 330px;
