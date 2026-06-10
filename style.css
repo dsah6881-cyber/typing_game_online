@@ -662,7 +662,7 @@ button {
 }
 @media (max-width: 768px) {
  body{
-    transform: scale(0.72);
+    transform: scale(0.70);
     transform-origin: top left;
     width: 139%;
     overflow-x: hidden;
