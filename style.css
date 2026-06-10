@@ -668,16 +668,21 @@ button {
     overflow-x: hidden;
 }
   .topbar{
-    width: 100vw !important;
+    width: 139% !important;
     margin-left: 0 !important;
     transform: none !important;
     justify-content: center !important;
     overflow: visible !important;
 }
 
-.controls{
-    margin-left: 0 !important;
-    transform: none !important;
+controls{
+    display:flex !important;
+    flex-wrap:wrap !important;
+    justify-content:center !important;
+    align-items:center !important;
+    gap:6px !important;
+    margin-left:0 !important;
+    transform:none !important;
 }
 
 
