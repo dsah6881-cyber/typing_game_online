@@ -535,6 +535,9 @@ button {
     font-size:13px;
 }
 @media (max-width: 768px) {
+    #difficulty{
+    width: 120px;
+}
 
     h1{
         font-size: 26px;
