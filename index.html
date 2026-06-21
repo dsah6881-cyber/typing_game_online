@@ -13,13 +13,22 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="homeScreen">
+    <h1>🏁 Lesson Typing Race</h1>
+    <button onclick="startGame()">▶️ Start Game</button>
+    <button onclick="openLessonWindow()">📚 Select Lesson</button>
+    <button onclick="showHighScore()">🏆 High Score</button>
+</div>
+
+<div id="gameScreen" class="hidden">    
 
 <h1>🏃 Lesson Typing Race</h1>
 <button id="musicBtn" onclick="toggleMusic()">🎵 Music ON/OFF</button>
+<div id="healthBar">
+    <div id="healthFill"></div>
+</div>
 
-<audio id="bgMusic" loop>
-    <source src="bgmusic.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgMusic" src="bgmusic.mp3" loop></audio>
 <div class="topbar">
 <div class="controls">
     <label>Difficulty:
@@ -37,6 +46,14 @@
             <option value="runner3">🏃‍♀️ Runner 3 🔒</option>
             <option value="runner4">🐎 Horse Runner 🔒</option>
         </select>
+        </label>
+        <label>View:
+    <select id="viewMode" onchange="changeViewMode()">
+        <option value="ltr">➡️ Left → Right</option>
+        <option value="rtl">⬅️ Right → Left</option>
+        
+    </select>
+
     </label>
 
     <button onclick="openLessonWindow()">Select Lesson</button>
@@ -48,6 +65,7 @@
     <div>WPM: <span id="wpm">0</span></div>
     <div>Accuracy: <span id="accuracy">100</span>%</div>
     <div>High: <span id="highScore">0</span></div>
+</div>
 </div>
 </div>
 <div class="road" id="road">
@@ -86,13 +104,13 @@
     <div class="coin">🪙</div>
     <div class="coin">🪙</div>
 
-    <div class="finishGate">
-        <div class="finishPole leftPole"></div>
-        <div class="finishBanner">FINISH</div>
-        <div class="finishPole rightPole"></div>
-    </div>
-
+  
+    <div class="finishPole leftPole"></div>
+    <div class="finishBanner">FINISH</div>
+    <div class="finishPole rightPole"></div>
 </div>
+
+
 
 <div id="wordLine">Loading lesson...</div>
 
@@ -126,6 +144,6 @@
 </div>
 
 <script src="script.js"></script>
-
+</div>
 </body>
 </html>

@@ -73,6 +73,9 @@ select {
     from { transform: translateX(0); }
     to { transform: translateX(-120px); }
 }
+.road.rtlRoad::after {
+    animation-direction: reverse !important;
+}
 
 .skyDecor {
     position: absolute;
@@ -97,20 +100,20 @@ select {
     right: 35px;
     font-size: 45px;
     display: none;
-    z-index: 2;
+    z-index: 1;
 }
 
 .tree {
     position: absolute;
     bottom: 220px;
     font-size: 150px;
-    z-index: 2;
-   animation: decorMove 18s linear infinite;
+    z-index: 2 !important;
+   animation: decorMove 22s linear infinite;
 }
 
 .tree1 { left: 100%; }
-	tree2 { left: 180%; }
-	tree3 { left: 260%; }
+	.tree2 { left: 140%; }
+	.tree3 { left: 180%; }
 
 .carDecor,
 .animalDecor {
@@ -118,16 +121,24 @@ select {
     bottom: 55px;
     font-size: 200px;
     z-index: 4;
-    animation: decorMove 18s linear infinite;
-    z-index: 41;
+    animation: decorMove 50s linear infinite;
+    z-index: 45 !important;
 }
 
-.car1 { left: 120%; }
-.animal1 { left: 300%; }
+.car1 { left: 100%; }
+.animal1 { left: 180%; }
 
 @keyframes decorMove {
     from { transform: translateX(0); }
-    to { transform: translateX(-700vw); }
+    to { transform: translateX(-250vw); }
+}
+@keyframes decorMoveRtl {
+    from {
+        transform: translateX(-250vw) scaleX(-1);
+    }
+    to {
+        transform: translateX(0) scaleX(-1);
+    }
 }
 
 #characterBox {
@@ -136,11 +147,12 @@ select {
     bottom: 100px;
     width: 300px;
     height: 300px;
-    z-index: 30;
+    z-index: 30 !important;
 }
 
 #runnerImg {
     width: 500px;
+    
 
 }
 
@@ -157,7 +169,9 @@ select {
     bottom: 120px;
     width: 300px;
     height: 240px;
-    z-index: 51px;
+    
+   
+   
 }
 
 .finishPole {
@@ -172,14 +186,14 @@ select {
 .leftPole {
     left: 100px;
     bottom: 100px;
-    z-index: 2;
+    z-index: 10 !important;
 }
 
 .rightPole {
     right: 10px;
     bottom: -100px;
     height: 350px;
-    z-index: 50;
+    z-index: 70 !important;
 }
 
 .finishBanner {
@@ -188,7 +202,7 @@ select {
     left: 95px;
     width: 190px;
     height: 60px;
-    z-index: 51;
+    z-index: 80 !important;
     background: repeating-linear-gradient(
         45deg,
         black 0 10px,
@@ -328,7 +342,7 @@ button {
     font-size: 38px;
     bottom: 150px;
     left: 95%;
-    z-index: 40;
+    z-index: 40 !important;
     display: none;
 }
 
@@ -464,14 +478,14 @@ button {
     100% { transform: translateY(0) scale(1); }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 780px) {
     .road { width: 96%; height: 360px; }
     .road::after { top: 255px; }
     #characterBox { width: 85px; bottom: 50px; }
     #runnerImg { width: 85px; }
     #emojiChar { font-size: 55px; line-height: 85px; }
-    .tree { bottom: 125px; font-size: 32px; }
-    .carDecor, .animalDecor { bottom: 38px; font-size: 34px; }
+    .tree { bottom: 130px; font-size: 45px; }
+    .carDecor, .animalDecor { bottom: 38px; font-size: 100px; }
     #wordLine { font-size: 25px; line-height: 32px; }
     #input { width: 85%; font-size: 18px; }
     #lessonGrid { grid-template-columns: repeat(4, 1fr); }
@@ -513,7 +527,7 @@ button {
 .road.pauseDecor .animalDecor {
     animation-play-state: paused !important;
 }
-.topBar{
+.topbar{
     display:flex;
     justify-content:center;
     align-items:center;
@@ -534,177 +548,239 @@ button {
     flex-wrap:nowrap;
     font-size:13px;
 }
-@media (max-width: 768px) {
- 
-
-    h1{
-        font-size: 26px;
-    }
-
-    .controls{
-        font-size: 14px;
-        gap: 8px;
-    }
-
-    .topStats{
-        font-size: 13px;
-    }
-
-    .road{
-        width: 100%;
-        height: 350px;
-    }
-
-    #characterBox img{
-        width: 180px !important;
-    }
-
-    #wordLine{
-        font-size: 25px;
-    }
-
-    #input{
-        width: 95%;
-        font-size: 18px;
-    }
-
-    button,
-    select{
-        font-size: 14px;
-    }
-
-@media (max-width: 768px) {
-   
-    .road {
-        width: 100%;
-        height: 330px;
-    }
-}
-    #characterBox {
-        bottom: 45px !important;
-        width: 180px !important;
-        height: 180px !important;
-    }
-
-    #runnerImg {
-        width: 180px !important;
-    }
-
-    #wordLine {
-        width: 95%;
-        font-size: 25px;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    #input {
-        width: 90%;
-        font-size: 18px;
-    }
-    .mountain {
-    bottom: 120px !important;
-    font-size: 80px !important;
-}
-.finish{
-    transform: scale(0.50) !important;
-    transform-origin: bottom right;
-}
-.mountain1 {
-    left: 90% !important;
-}
-
-.mountain2 {
-    left: 180% !important;
-}
-.finishGate {
-    right: -10px !important;
-    bottom: 70px !important;
-    transform: none !important;
-}
-.finishGate img,
-.finishBanner {
-    width: 100px !important;
-    height: auto !important;
-    position: relative !important;
-    top: 10px;
-    left: 190px !important;
-}
 
 
-.finishPole {
-    height: 140px !important;
-    bottom: 55px !important;
-    
-}
-.finishPole.right {
-    height: 140px !important;
-    bottom: 55px !important;
-}
-
-.finishPole.left {
-    top: auto !important;
-    bottom: 55px !important;
-    left: 110px !important;
-    right: auto !important;
-}
-.finishGate .finishPole:first-of-type {
-    transform: translateX(80px) !important;
-}
-.rightPole {
-    height: 300px !important;
-    bottom: -80px !important;
-    right: 20px !important;
-}
-.leftPole {
-    height: 140px !important;
-    left: 120px !important;
-}
-}
-@media (max-width: 768px) {
- body{
-   
-    overflow-x: hidden;
-}
-  .topbar{
-    width: 100% !important;
-    margin-left: 0 !important;
-    transform: none !important;
-    justify-content: center !important;
-    overflow: visible !important;
-    flex-wrap: wrap !important;
-}
-
-.controls{
-    display:flex !important;
-    flex-wrap:wrap !important;
-    justify-content:center !important;
-    align-items:center !important;
-    gap:6px !important;
-    margin-left:0 !important;
-    transform:none !important;
-}
-
-
-
-  .road{
-    width: 92% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-  #wordLine {
-    width: 90% !important;
-    font-size: 20px !important;
-  }
-
-  #input {
-    width: 55% !important;
-  }
-}
 #musicBtn{
     padding:8px 15px;
     font-size:16px;
     border-radius:8px;
     cursor:pointer;
     margin-bottom:10px;
+}
+
+
+
+
+/* GATE FORCE FIX */
+.leftPole{
+  position:absolute !important;
+  right:140px !important;
+  left:auto !important;
+  bottom:230px !important;
+  height:200px !important;
+}
+
+.rightPole{
+  position:absolute !important;
+  right:20px !important;
+  left:auto !important;
+  bottom:20px !important;
+  height:400px !important;
+}
+
+.finishBanner{
+  position:absolute !important;
+  right:0px !important;
+  left:auto !important;
+  bottom:400px !important;
+  top:auto !important;
+  width:170px !important;
+  height:60px !important;
+  transform:skew(-30deg) !important;
+}
+/* RIGHT TO LEFT GATE FIX */
+.road.rtlRoad .leftPole{
+  left:120px !important;
+  right:auto !important;
+}
+
+.road.rtlRoad .rightPole{
+  left:20px !important;
+  right:auto !important;
+}
+
+.road.rtlRoad .finishBanner{
+  left:5px !important;
+  right:auto !important;
+  bottom:400px !important;
+  transform:scaleX(-1) skew(-10deg) !important;
+  width: 150px !important;
+}
+/* RTL vehicle layer + height */
+.road.rtlRoad .carDecor,
+.road.rtlRoad .animalDecor{
+    bottom: 150px !important;
+    z-index: 20 !important;
+}
+
+.road.rtlRoad #characterBox{
+    z-index: 60 !important;
+    bottom: 100px !important;
+}
+
+.road.rtlRoad .coin{
+    z-index: 40 !important;
+}
+/* MOBILE FIX */
+@media (max-width: 768px){
+
+  .finishBanner{
+    width: 100px !important;
+    height: 35px !important;
+    line-height: 35px !important;
+    font-size: 18px !important;
+    bottom: 190px !important;
+    right: 10px !important;
+  }
+
+  .leftPole{
+    height: 90px !important;
+    bottom: 130px !important;
+    right: 95px !important;
+  }
+
+  .rightPole{
+    height: 210px !important;
+    bottom: 10px !important;
+    right: 10px !important;
+  }
+
+  .carDecor,
+  .animalDecor{
+    bottom: 40px !important;
+    font-size: 95px !important;
+    z-index: 50;
+  }
+
+  .road.rtlRoad .finishBanner{
+    left: 10px !important;
+    right: auto !important;
+    bottom: 190px !important;
+  }
+
+  .road.rtlRoad .leftPole{
+    left: 95px !important;
+    right: auto !important;
+  }
+
+  .road.rtlRoad .rightPole{
+    left: 10px !important;
+    right: auto !important;
+  }
+
+  .road.rtlRoad .carDecor,
+  .road.rtlRoad .animalDecor{
+    bottom: 40px !important;
+  }
+  #characterBox{
+    bottom: 150px !important;
+    width: 90px !important;
+    height: 90px !important;
+    z-index: 20 !important;
+    left: -25px !important;
+  }
+
+  #runnerImg{
+    width: 150px !important;
+  }
+  .coin{
+    bottom: 100px;
+  }
+  .mountain1,
+.mountain2{
+    bottom: 140px !important;
+}
+
+}
+/* MOBILE RTL FIX */
+@media (max-width: 768px){
+
+  .road.rtlRoad #characterBox{
+    left: auto !important;
+    right: 25px !important;
+    bottom: 130px !important;
+    z-index: 60 !important;
+  }
+
+  .road.rtlRoad #runnerImg{
+    width: 180px !important;
+  }
+
+  .road.rtlRoad .finishBanner{
+    left: 10px !important;
+    right: auto !important;
+    bottom: 200px !important;
+    width: 100px !important;
+    height: 35px !important;
+    line-height: 35px !important;
+    font-size: 18px !important;
+  }
+
+  .road.rtlRoad .leftPole{
+    left: 95px !important;
+    right: auto !important;
+    bottom: 130px !important;
+    height: 100px !important;
+  }
+
+  .road.rtlRoad .rightPole{
+    left: 10px !important;
+    right: auto !important;
+    bottom: 10px !important;
+    height: 220px !important;
+  }
+
+  .road.rtlRoad .carDecor,
+  .road.rtlRoad .animalDecor{
+    bottom: 100px !important;
+    z-index: 50 !important;
+  }
+  .road.rtlRoad .coin{
+    bottom: 70px;
+  }
+}
+#healthBar{
+    width: 200px;
+    height: 22px;
+    border: 2px solid #333;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    background: #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#healthFill{
+    width: 100%;
+    height: 100%;
+    background: green;
+    border-radius: 6px;
+    transition: width 0.3s;
+}
+.road.rtlRoad #characterBox:has(#runnerImg[src*="runner4.gif"]){
+    bottom: 20px !important;
+}
+#homeScreen{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    background:linear-gradient(#87ceeb,#ffffff);
+}
+
+#homeScreen h1{
+    font-size:42px;
+}
+
+#homeScreen button{
+    width:220px;
+    font-size:22px;
+    padding:14px;
+}
+
+#gameScreen.hidden{
+    display:none;
 }

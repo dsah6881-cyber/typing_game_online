@@ -8,37 +8,83 @@ const airplaneSound = new Audio("airplane.mp3");
 helicopterSound.volume = 0.3;
 airplaneSound.volume = 0.3;
 
-const beginnerWords = [
-    "apple","banana","orange","grape","mango",
-"school","teacher","student","book","pen",
-"river","mountain","forest","garden","flower",
-"rice","oil","salt","sugar","flour","wheat","bread","butter","cheese","milk",
-"cream","yogurt","egg","chicken","mutton","beef","fish","shrimp","crab","sausage",
-"ham","bacon","tea","coffee","juice","water","cola","sprite","fanta","energy",
-"honey","jam","ketchup","mayonnaise","vinegar","sauce","pickle","biscuit","cookie","cracker",
-"cake","chocolate","candy","chips","noodle","pasta","spaghetti","macaroni","pizza","burger",
-"sandwich","apple","banana","orange","mango","grape","papaya","melon","pear","peach",
-"lemon","lime","onion","potato","tomato","carrot","cabbage","spinach","lettuce","cucumber",
-"pumpkin","bean","pea","garlic","ginger","pepper","chili","turmeric","coriander","cumin",
-"cardamom","clove","cinnamon","almond","cashew","walnut","peanut","raisin","dates","coconut",
-"oats","cereal","corn","ricecake","icecream","popcorn","muffin","donut","waffle","pancake",
-"doctor","nurse","driver","pilot","farmer",
-"king","queen","baby","boy","girl","man","woman","friend","family","home",
-"garden","flower","forest","jungle","desert","rain","snow","storm","cloud","wind",
-"summer","winter","spring","autumn","morning","evening","night","today","tomorrow","yesterday",
-"doctor","nurse","hospital","police","farmer","driver","pilot","engineer","artist","writer",
-"mango","orange","grape","lemon","coconut","papaya","melon","cherry",
-"dog","cat","tiger","lion","horse","monkey","elephant","rabbit","zebra","panda",
-"computer","mouse","keyboard","mobile","laptop","monitor","router","internet","browser","camera",
-"school","teacher","student","book","river","mountain","ocean","city","village","planet",
-"happy","strong","quick","smart","bright","green","yellow","black","white","small",
-"water","milk","bread","rice","sugar","coffee","tea","cake","pizza","burger",
-"ball","door","room","table","chair","house","shirt","phone","pen","bag",
-"red","blue","pink","gold","silver","grass","tree","sun","moon","star",
-"fish","bird","cow","goat","duck","frog","snake","bear","camel","deer",
-"hand","foot","eye","ear","nose","hair","face","head","arm","leg",
-"car","bus","bike","train","plane","boat","ship","road","street","park",
-"king","queen","baby","boy","girl","man","woman","friend","family","home"
+const allSounds = [
+  correctSound,
+  wrongSound,
+  levelupSound,
+  winSound,
+  helicopterSound,
+  airplaneSound
+];
+
+let audioUnlocked = false;
+
+function unlockAudio() {
+  if (audioUnlocked) return;
+  audioUnlocked = true;
+
+  allSounds.forEach(s => {
+    s.play().then(() => {
+      s.pause();
+      s.currentTime = 0;
+    }).catch(() => {});
+  });
+}
+
+document.addEventListener("click", unlockAudio);
+document.addEventListener("keydown", unlockAudio);
+const customLessons = [
+["apple","banana","orange","grape","mango","papaya","watermelon","pineapple","guava","pear","peach","plum","cherry","kiwi","lemon","lime","coconut","fig","dates","melon"],
+["mango","orange","banana","blueberry","cranberry","dragonfruit","durian","grapefruit","jackfruit","lychee","mandarin","nectarine","olive","passionfruit","pomegranate","raspberry","strawberry","tamarind","tangerine","mulberry"],
+["carrot","potato","onion","tomato","cabbage","spinach","lettuce","cucumber","pumpkin","bean","pea","garlic","ginger","pepper","chili","radish","broccoli","corn","turnip","beetroot"],
+["okra","cauliflower","eggplant","zucchini","celery","asparagus","mushroom","leek","parsley","mint","basil","coriander","curry","yam","cassava","kale","mustard","sprout","shallot","capsicum"],
+["rose","lotus","jasmine","sunflower","lily","orchid","tulip","daisy","lavender","hibiscus","marigold","violet","poppy","carnation","iris","magnolia","dahlia","petunia","gardenia","camellia"],
+["cat","dog","lion","tiger","elephant","giraffe","zebra","monkey","rabbit","deer","bear","camel","horse","goat","cow","dog","cat","wolf","fox","kangaroo","panda","leopard"],
+["cheetah","jaguar","donkey","buffalo","sheep","pig","mouse","rat","squirrel","raccoon","hippo","rhino","gorilla","chimpanzee","koala","otter","beaver","sloth","hyena","moose"],
+["eagle","parrot","sparrow","crow","pigeon","owl","peacock","duck","goose","swan","falcon","hawk","woodpecker","kingfisher","robin","canary","flamingo","ostrich","penguin","turkey"],
+["hen","rooster","vulture","crane","heron","stork","pelican","seagull","albatross","cuckoo","nightingale","swallow","magpie","raven","quail","dove","finch","macaw","hornbill","kiwi"],
+["salmon","tuna","shark","catfish","goldfish","trout","sardine","anchovy","mackerel","carp","eel","snapper","grouper","barracuda","tilapia","cod","herring","piranha","ray","sturgeon"],
+["swordfish","marlin","bass","perch","flounder","halibut","guppy","betta","clownfish","angelfish","seahorse","lobster","crab","shrimp","octopus","squid","oyster","clam","mussel","jellyfish"],
+["car","bus","bike","train","plane","boat","ship","truck","van","taxi","scooter","motorcycle","bicycle","tractor","ambulance","helicopter","submarine","rocket","tram","jeep"],
+["computer","keyboard","monitor","mouse","cable","charger","laptop","mobile","tablet","speaker","printer","router","camera","scanner","projector","microphone","earphone","headphone","battery","adapter"],
+["television","radio","remote","fan","cooler","heater","fridge","washingmachine","microwave","oven","toaster","blender","mixer","kettle","iron","bulb","switch","socket","wire","inverter"],
+["water","cocacola","sprite","fanta","pepsi","redbull","coffee","tea","milk","juice","lemonade","smoothie","shake","latte","espresso","cappuccino","mocha","energydrink","soda","icedtea"],
+["shirt","tshirt","jeans","trouser","coat","jacket","sweater","hoodie","shorts","skirt","dress","blazer","suit","tie","cap","hat","sock","glove","scarf","belt"],
+["tree","sky","cloud","rain","road","air","water","river","mountain","forest","garden","flower","grass","stone","sand","soil","sun","moon","star","wind"],
+["storm","snow","summer","winter","spring","autumn","ocean","sea","lake","pond","island","valley","desert","jungle","hill","waterfall","volcano","earth","planet","rainbow"],
+["apple","bread","rice","sugar","salt","flour","oil","butter","cheese","milk","cream","yogurt","egg","chicken","mutton","beef","fish","shrimp","sausage","ham"],
+["bacon","tea","coffee","juice","water","cola","sprite","fanta","honey","jam","ketchup","mayonnaise","vinegar","sauce","pickle","biscuit","cookie","cracker","cake","chocolate"],
+["candy","chips","noodle","pasta","spaghetti","macaroni","pizza","burger","sandwich","oats","cereal","corn","ricecake","icecream","popcorn","muffin","donut","waffle","pancake","soap"],
+["shampoo","toothpaste","toothbrush","detergent","tissue","napkin","diaper","lotion","powder","perfume","razor","comb","brush","bucket","mop","broom","sponge","plate","cup","glass"],
+["spoon","fork","knife","bowl","pan","pot","bottle","box","bag","basket","towel","battery","charger","candle","matchbox","lighter","rope","tape","glue","paper"],
+["ant","bee","butterfly","mosquito","fly","dragonfly","grasshopper","cricket","cockroach","termite","beetle","ladybug","moth","wasp","centipede","millipede","spider","tick","flea","caterpillar"],
+["doctor","nurse","teacher","student","driver","pilot","farmer","engineer","artist","writer","police","soldier","chef","baker","tailor","barber","mason","plumber","painter","guard"],
+["red","blue","green","yellow","black","white","pink","purple","orange","brown","gray","gold","silver","violet","indigo","maroon","cyan","cream","navy","beige"],
+["head","face","eye","ear","nose","mouth","hair","neck","shoulder","arm","hand","finger","chest","stomach","back","leg","knee","foot","toe","skin"],
+["school","teacher","student","book","pen","pencil","eraser","sharpener","ruler","bag","desk","chair","board","chalk","marker","copy","paper","lesson","class","exam"],
+["home","room","door","window","wall","floor","roof","kitchen","bathroom","bedroom","table","chair","bed","pillow","blanket","sofa","mirror","clock","lamp","curtain"],
+["happy","sad","angry","smart","quick","slow","strong","weak","bright","dark","small","large","short","tall","clean","dirty","soft","hard","hot","cold"],
+["india","malaysia","china","japan","korea","nepal","bhutan","thailand","singapore","indonesia","pakistan","bangladesh","srilanka","canada","america","mexico","brazil","france","germany","italy"],
+["football","cricket","hockey","tennis","badminton","basketball","volleyball","baseball","golf","boxing","wrestling","running","swimming","cycling","skating","karate","judo","chess","racing","surfing"],
+["monday","tuesday","wednesday","thursday","friday","saturday","sunday","morning","evening","night","today","tomorrow","yesterday","week","month","year","hour","minute","second","time"],
+["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty"],
+["circle","square","triangle","rectangle","diamond","oval","line","point","angle","curve","corner","side","center","radius","height","width","length","shape","size","area"],
+["keyboard","screen","mouse","folder","file","window","button","link","browser","website","internet","server","coding","script","style","html","css","javascript","android","software"],
+["phone","message","call","contact","number","camera","gallery","video","photo","music","ringtone","setting","network","wifi","hotspot","bluetooth","battery","charge","screen","password"],
+["market","shop","store","mall","cashier","customer","price","money","change","bill","receipt","cart","basket","counter","shelf","packet","bottle","can","box","sale"],
+["knife","spoon","fork","plate","bowl","glass","cup","kettle","stove","oven","fridge","sink","soap","sponge","towel","pan","pot","lid","tray","jar"],
+["king","queen","prince","princess","baby","boy","girl","man","woman","father","mother","brother","sister","uncle","aunt","friend","family","neighbor","child","people"],
+["temple","church","mosque","school","hospital","bank","airport","station","hotel","office","factory","market","bridge","tower","castle","museum","library","cinema","park","zoo"],
+["hammer","screw","nail","drill","saw","wrench","pliers","cutter","ladder","helmet","glove","paint","brush","pipe","wire","tool","machine","engine","motor","wheel"],
+["wallet","key","watch","ring","chain","bag","purse","umbrella","ticket","card","coin","note","passport","license","photo","paper","book","pen","bottle","mask"],
+["morning","breakfast","lunch","dinner","sleep","wake","walk","run","read","write","play","study","work","cook","clean","wash","drive","travel","buy","sell"],
+["north","south","east","west","left","right","up","down","front","back","inside","outside","near","far","above","below","middle","corner","side","center"],
+["fire","smoke","ash","dust","mud","rock","leaf","root","branch","seed","fruit","plant","flower","grass","wood","bamboo","thorn","bush","field","farm"],
+["metal","plastic","glass","paper","cotton","wool","silk","leather","rubber","wood","stone","steel","iron","copper","gold","silver","clay","cement","brick","sand"],
+["music","song","dance","movie","story","poem","game","player","winner","score","level","course","lesson","typing","speed","accuracy","mistake","health","coin","runner"],
+["easy","medium","advanced","beginner","perfect","wrong","correct","finish","restart","select","unlock","locked","complete","practice","custom","lesson","word","letter","space","enter"],
+["apple","tiger","eagle","salmon","car","keyboard","water","shirt","rose","ant","cloud","bread","doctor","red","hand","school","home","happy","india","cricket"],
+["banana","lion","parrot","tuna","bus","monitor","rain","jeans","lotus","bee","tree","milk","teacher","blue","eye","book","room","smart","japan","football"]
 ];
 
 const symbols = ["@","#","$","&","!","?","%","=","~","*"];
@@ -64,7 +110,9 @@ const emojiChar = document.getElementById("emojiChar");
 const road = document.getElementById("road");
 const difficultySelect = document.getElementById("difficulty");
 const characterSelect = document.getElementById("character");
+const viewModeSelect = document.getElementById("viewMode");
 
+let viewMode = localStorage.getItem("viewMode") || "ltr";
 const popup = document.getElementById("popup");
 const popupTitle = document.getElementById("popupTitle");
 const popupScore = document.getElementById("popupScore");
@@ -87,6 +135,7 @@ let mistakeLock = false;
 let highScore = localStorage.getItem("lessonTypingHighScore") || 0;
 let completedLessons = JSON.parse(localStorage.getItem("completedLessons")) || [];
 
+let health = 10;
 let coinTimer = null;
 let coinMoveTimer = null;
 let activeCoin = null;
@@ -95,9 +144,21 @@ let mistakeCount = 0;
 let unlockedLesson = Number(localStorage.getItem("unlockedLesson")) || 0;
 let perfectLessons = JSON.parse(localStorage.getItem("perfectLessons")) || [];
 let unlockedRunners = Number(localStorage.getItem("unlockedRunners")) || 1;
+let carSpeed = 1;
+let lastTypingTime = Date.now();
 highScoreDisplay.textContent = highScore;
 difficultySelect.value = difficulty;
 
+function updateHealthBar() {
+    const fill = document.getElementById("healthFill");
+    fill.style.width = (health * 10) + "%";
+
+    if (health >= 8) fill.style.background = "green";
+    else if (health >= 6) fill.style.background = "lime";
+    else if (health >= 4) fill.style.background = "yellow";
+    else if (health >= 2) fill.style.background = "orange";
+    else fill.style.background = "red";
+}
 function saveProgress() {
     localStorage.setItem("currentLesson", currentLesson);
     localStorage.setItem("selectedDifficulty", difficulty);
@@ -168,47 +229,27 @@ function makeAdvancedWord(base, i) {
     if (i % 3 === 1) return base.toUpperCase() + num + sym;
     return base + sym + num + "X";
 }
-
 function buildLessons(type) {
-    let allWords = [];
+    return customLessons.map(function (lesson, lessonIndex) {
+        return lesson.map(function (word, wordIndex) {
 
-    for (let i = 0; i < 1000; i++) {
-        let base = beginnerWords[i % beginnerWords.length];
-
-        if (type === "beginner") {
-            if (i >= 780) {
-                allWords.push(makeHardPracticeWord(i));
-            } else {
-                allWords.push(base.toLowerCase());
+            if (type === "beginner") {
+                return word.toLowerCase();
             }
-        }
 
-        if (type === "medium") {
-            if (i >= 780) {
-                allWords.push(makeMediumHardWord(i));
-            } else {
-                allWords.push(capitalize(base.toLowerCase()));
+            if (type === "medium") {
+                return capitalize(word.toLowerCase());
             }
-        }
 
-        if (type === "advanced") {
-            if (i >= 780) {
-                allWords.push(makeAdvancedHardWord(i));
-            } else {
-                allWords.push(makeAdvancedWord(base, i));
+            if (type === "advanced") {
+                return makeAdvancedWord(
+                    word.toLowerCase(),
+                    lessonIndex * 20 + wordIndex
+                );
             }
-        }
-    }
 
-    let tempLessons = [];
-
-    for (let l = 0; l < 50; l++) {
-        let start = l * 20;
-        let wordsPerLesson = 20 + l;
-        tempLessons.push(allWords.slice(start, start + wordsPerLesson));
-    }
-
-    return tempLessons;
+        });
+    });
 }
 
 function hideAllCoins() {
@@ -237,10 +278,13 @@ function spawnCoin() {
 
     activeCoin = coins[Math.floor(Math.random() * coins.length)];
     activeCoin.style.display = "block";
+   if (viewMode === "rtl") {
+    activeCoin.style.left = "-10%";
+} else {
     activeCoin.style.left = "95%";
+}
 
-    let coinX = 95;
-
+let coinX = viewMode === "rtl" ? -10 : 95;
    coinMoveTimer = setInterval(function () {
     let idleTime = Date.now() - lastKeyTime;
 
@@ -248,10 +292,18 @@ function spawnCoin() {
         return;
     }
 
+   if (viewMode === "rtl") {
+    coinX += 1;
+} else {
     coinX -= 1;
+}
     activeCoin.style.left = coinX + "%";
 
-        if (coinX < -10 || activeCoin.classList.contains("collected")) {
+      if (
+    coinX < -10 ||
+    coinX > 110 ||
+    activeCoin.classList.contains("collected")
+) {  
             activeCoin.style.display = "none";
             clearInterval(coinMoveTimer);
         }
@@ -294,8 +346,7 @@ function loadLesson() {
     wpmDisplay.textContent = "0";
     accuracyDisplay.textContent = "100";
 
-    characterBox.style.left = "20px";
-    characterBox.style.bottom = "100px";
+  resetCharacterPosition();  
     input.value = "";
     input.disabled = false;
     message.textContent = "";
@@ -380,6 +431,16 @@ function finishLesson() {
     input.disabled = true;
     updateStats();
     stopCoinSystem();
+
+    const finishGate = document.querySelector(".finishGate");
+
+    if (finishGate) {
+        if (viewMode === "ltr") {
+            characterBox.style.left = (finishGate.offsetLeft - 180) + "px";
+        } else {
+            characterBox.style.left = (finishGate.offsetLeft + 40) + "px";
+        }
+    }
     if (mistakeCount <=5) {
     if (currentLesson + 1 > unlockedLesson) {
         unlockedLesson = currentLesson + 1;
@@ -409,8 +470,6 @@ if (perfectLessons.length >= 30) {
     unlockedRunners = 2;
 }
 
-localStorage.setItem("unlockedRunners", unlockedRunners);
-unlockedRunners = 4;
 localStorage.setItem("unlockedRunners", unlockedRunners);
 updateRunnerLocks();
 
@@ -446,19 +505,6 @@ if (mistakeCount <= 5) {
     popup.classList.remove("hidden");
 }
 
-function nextLesson() {
-    if (currentLesson >= 49) {
-        restartCourse();
-        return;
-    }
-
-    if (currentLesson + 1 <= unlockedLesson) {
-        currentLesson++;
-        loadLesson();
-    } else {
-        loadLesson();
-    }
-}
 
 function openLessonWindow() {
     lessonGrid.innerHTML = "";
@@ -510,11 +556,12 @@ function updateRunnerLocks() {
     const runner3 = document.querySelector('option[value="runner3"]');
     const runner4 = document.querySelector('option[value="runner4"]');
 
-  unlockedRunners = 1
+ 
 
 if (runner2) runner2.textContent = unlockedRunners >= 2 ? "🏃 Runner 2" : "🏃 Runner 2 🔒";
 if (runner3) runner3.textContent = unlockedRunners >= 3 ? "🏃 Runner 3" : "🏃 Runner 3 🔒";
 if (runner4) runner4.textContent = unlockedRunners >= 4 ? "🐎 Horse Runner" : "🐎 Horse Runner 🔒";
+
 }  
 
 function changeCharacter() {
@@ -526,7 +573,7 @@ function changeCharacter() {
         runnerImg.style.display = "block";
         emojiChar.style.display = "none";
         emojiChar.style.transform = "scaleX(1)";
-      characterBox.style.bottom = "100px";
+      characterBox.style.bottom = "140px";
 runnerImg.style.width = "330px";  
     }
     if (value === "runner2") {
@@ -542,7 +589,7 @@ runnerImg.style.width = "330px";
     runnerImg.src = "runner2.gif";
     runnerImg.style.display = "block";
     emojiChar.style.display = "none";
-    characterBox.style.bottom = "120px";
+    characterBox.style.bottom = "200px";
 runnerImg.style.width = "330px";
 }
 
@@ -559,7 +606,7 @@ if (value === "runner3") {
     runnerImg.src = "runner3.gif";
     runnerImg.style.display = "block";
     emojiChar.style.display = "none";
-    characterBox.style.bottom = "120px";
+    characterBox.style.bottom = "170px";
 runnerImg.style.width = "330px";
 }
 
@@ -573,11 +620,40 @@ if (value === "runner4") {
     runnerImg.src = "runner4.gif";
     runnerImg.style.display = "block";
     emojiChar.style.display = "none";
-    characterBox.style.bottom = "20px";
+    characterBox.style.bottom = "35px";
 runnerImg.style.width = "330px";
+if (window.innerWidth <= 768 && viewMode === "rtl" && characterSelect.value === "runner4") {
+    characterBox.style.setProperty("bottom", "10px", "important");
+}
+if (window.innerWidth > 768 && viewMode === "rtl" && value === "runner4") {
+    characterBox.style.setProperty("bottom", "-10px", "important");
 }
 
-   
+if (window.innerWidth <= 768) {
+    if (viewMode === "rtl") {
+        characterBox.style.bottom =
+            value === "runner" ? "180px" :
+            value === "runner2" ? "130px" :
+            value === "runner4" ? "10px" :   // runner4 mobile RTL
+               // runner1 mobile RTL
+            characterBox.style.bottom;
+    } else {
+        characterBox.style.bottom =
+            value === "runner" ? "25px" :
+            value === "runner2" ? "120px" : 
+            value === "runner3" ? "120" :   // runner1 mobile LTR
+            value === "runner4" ? "90px" :
+            characterBox.style.bottom;
+    }
+            if (window.innerWidth <= 768 && viewMode !== "rtl" && value === "runner4") {
+    characterBox.style.setProperty("bottom", "100px", "important");
+}
+    }
+    
+}
+
+
+   runnerImg.style.transform = viewMode === "rtl" ? "scaleX(-1)" : "scaleX(1)";
 
     input.focus();
 }
@@ -619,15 +695,40 @@ input.addEventListener("beforeinput", function (e) {
     }
 
     // Ek saath 2 wrong text block
-    if (isCurrentWrong && previousWrong) {
-        e.preventDefault();
-        playSound(wrongSound);
-        return;
+  if (isCurrentWrong && previousWrong) {
+    e.preventDefault();
+    playSound(wrongSound);
+    return;
+}
+
+if (isCurrentWrong) {
+    playSound(wrongSound);
+
+    health--;
+    updateHealthBar();
+
+    if (health <= 0) {
+        alert("Out of Health! Restarting the current lesson...");
+        health = 10;
+        updateHealthBar();
+
+        input.value = "";
+        wordIndex = 0;
+        mistakeCount = 0;
+        lessonMistake = false;
+        mistakeLock = false;
+
+        loadLesson();
+        resetCharacterPosition();
     }
+}
+
 });
 
 input.addEventListener("input", function () {
     lastKeyTime = Date.now();
+    lastTypingTime = Date.now();
+carSpeed = 1;
     if (!lessonStartTime) {
         lessonStartTime = Date.now();
     }
@@ -649,6 +750,21 @@ input.addEventListener("input", function () {
 ) {
     lessonMistake = true;
     mistakeCount++;
+updateHealthBar();
+
+if (health <= 0) {
+    alert("Health depleted! The lesson will restart.");
+    health = 10;
+    updateHealthBar();
+    input.value = "";
+wordIndex = 0;
+mistakeCount = 0;
+lessonMistake = false;
+mistakeLock = false;
+
+loadLesson();
+resetCharacterPosition();
+}
 }
 
    if (
@@ -680,30 +796,86 @@ input.addEventListener("input", function () {
         playSound(correctSound);
 
         characterBox.style.transition = "bottom 0.25s ease";
-        let normalBottom = "100px";
-let jumpBottom = "170px";
+   let normalBottom, jumpBottom;
 
-if (characterSelect.value === "runner4") {
-    normalBottom = "10px";
-    jumpBottom = "70px";
+if (viewMode === "rtl") {
+    normalBottom =
+        characterSelect.value === "runner" ? "90px" :
+        characterSelect.value === "runner2" ? "130px" :
+        characterSelect.value === "runner3" ? "90px" :
+        characterSelect.value === "runner4" ? "0px" :
+        "90px";
+
+    jumpBottom =
+        characterSelect.value === "runner" ? "180px" :
+        characterSelect.value === "runner2" ? "230px" :
+        characterSelect.value === "runner3" ? "200px" :
+        characterSelect.value === "runner4" ? "100px" :
+        "180px";
+}
+        // if (window.innerWidth <= 768 && viewMode !== "rtl" && characterSelect.value === "runner4") {
+    // normalBottom = "90px";
+    // jumpBottom = "120px";
+
+// } 
+
+else {
+    normalBottom =
+        characterSelect.value === "runner" ? "140px" :
+        characterSelect.value === "runner2" ? "180px" :
+        characterSelect.value === "runner3" ? "170px" :
+        characterSelect.value === "runner4" ? "35px" :
+        "140px";
+
+    jumpBottom =
+        characterSelect.value === "runner" ? "220px" :
+        characterSelect.value === "runner2" ? "250px" :
+        characterSelect.value === "runner3" ? "250px" :
+        characterSelect.value === "runner4" ? "120px" :
+        "220px";
+}
+if (window.innerWidth <= 768 && viewMode === "ltr" && characterSelect.value === "runner4") {
+    normalBottom = "90px";
+    jumpBottom = "120px";
 }
 
-characterBox.style.bottom = jumpBottom;
+characterBox.style.setProperty("bottom", jumpBottom, "important");
 
 setTimeout(function () {
-    characterBox.style.bottom = normalBottom;
-}, 250);
+    characterBox.style.setProperty("bottom", normalBottom, "important");
+    if (window.innerWidth <= 768 && viewMode === "rtl") {
+    characterBox.style.setProperty(
+        "bottom",
+        characterSelect.value === "runner" ? "130px" :
+        characterSelect.value === "runner2" ? "130px" :
+        characterSelect.value === "runner3" ? "130px" :
+        characterSelect.value === "runner4" ? "50px" :
+        normalBottom,
+        "important"
+    );
 
+    }
+    if (window.innerWidth <= 768 && viewMode !== "rtl") {
+    characterBox.style.setProperty(
+        "bottom",
+        characterSelect.value === "runner" ? "140px" :
+        characterSelect.value === "runner2" ? "170px" :
+        characterSelect.value === "runner3" ? "160px" :
+        characterSelect.value === "runner4" ? "90px" :
+        normalBottom,
+        "important"
+    );
+}
+
+
+
+}, 250);
         score++;
         wordIndex++;
 
         scoreDisplay.textContent = score;
         wordCountDisplay.textContent = wordIndex;
-
-        position += 30;
-        let maxPosition = road.offsetWidth - 230;
-if (position > maxPosition) position = maxPosition;
-        characterBox.style.left = position + "px";
+moveRunnerStep();
 
         input.value = "";
 
@@ -864,7 +1036,7 @@ function flyPlane() {
 
     airplane.style.display = "block";
     airplaneSound.currentTime = 0;
-    airplaneSound.play().catch(function(){});
+   playSound(airplaneSound);
 
     airplane.style.left = "-250px";
     airplane.style.top = "20px";
@@ -902,8 +1074,7 @@ function flyHelicopter() {
 
     helicopter.style.display = "block";
     helicopterSound.currentTime = 0;
-    helicopterSound.play().catch(function(){});
-
+  playSound(helicopterSound);
     helicopter.style.left = "-250px";
     helicopter.style.top = "30px";
     helicopter.style.transform = "scaleX(-1)";
@@ -948,6 +1119,7 @@ lessons = buildLessons(difficulty);
 updateRunnerLocks();
 loadLesson();
 changeCharacter();
+updateDecorDirection();
 setTimeout(function () {
     launchFlyingVehicle();
 }, 5000);
@@ -958,6 +1130,7 @@ setInterval(function () {
 
 window.onload = function () {
     input.focus();
+    
 };
 let treeMode = "";
 
@@ -1013,6 +1186,9 @@ if (characterSelect.value === "runner4") {
     if (!runnerImg.src.includes("runner4.gif")) {
         runnerImg.src = "runner4.gif";
     }
+    if (window.innerWidth <= 768 && viewMode === "rtl") {
+    characterBox.style.setProperty("bottom", "50px", "important");
+}
 }
 
 } else {
@@ -1040,8 +1216,11 @@ if (characterSelect.value === "runner4") {
     if (!runnerImg.src.includes("runnerwalk4.gif")) {
         runnerImg.src = "runnerwalk4.gif";
     }
+    if (window.innerWidth <= 768 && viewMode === "rtl") {
+    characterBox.style.setProperty("bottom", "50px", "important");
 }
-    road.classList.add("pausedDecor");
+}
+    
 }
     }
 ,200);
@@ -1049,9 +1228,7 @@ const bgMusic = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
 let musicPlaying = false;
-window.onload = function() {
-    bgMusic.play();
-}
+
 
 function toggleMusic() {
     if (musicPlaying) {
@@ -1063,4 +1240,119 @@ function toggleMusic() {
     }
 
     musicPlaying = !musicPlaying;
+}
+viewModeSelect.value = viewMode;
+
+function changeViewMode() {
+    viewMode = viewModeSelect.value;
+
+    localStorage.setItem("viewMode", viewMode);
+
+    position = 20;
+    characterBox.style.left = "20px";
+    characterBox.style.bottom = "100px";
+
+    updateDecorDirection();
+    loadLesson();
+    changeCharacter();
+}
+function resetCharacterPosition() {
+    let runnerWidth = window.innerWidth <= 768 ? 120 : 260;
+    let maxPosition = road.offsetWidth - runnerWidth;
+    if (maxPosition < 20) maxPosition = 20;
+
+    const leftPole = document.querySelector(".leftPole");
+const rightPole = document.querySelector(".rightPole");
+const finishBanner = document.querySelector(".finishBanner");
+    if (viewMode === "rtl") {
+        position = maxPosition
+        characterBox.style.left = position + "px";
+
+
+        runnerImg.style.transform = "scaleX(-1)";
+       if (viewMode === "rtl") {
+    characterBox.style.bottom =
+        characterSelect.value === "runner" ? "90px" :
+        characterSelect.value === "runner2" ? "-90px" :
+        characterSelect.value === "runner3" ? "90px" :
+        characterSelect.value === "runner4" ? "20px" :
+        "90px";
+} 
+
+        
+    } 
+    
+   else {
+    position = 20;
+    characterBox.style.left = "20px";
+    runnerImg.style.transform = "scaleX(1)";
+
+    characterBox.style.bottom =
+        characterSelect.value === "runner" ? "140px" :
+        characterSelect.value === "runner2" ? "180px" :
+        characterSelect.value === "runner3" ? "170px" :
+        characterSelect.value === "runner4" ? "35px" :
+        "120px";
+}
+}
+
+function moveRunnerStep() {
+   let runnerWidth = window.innerWidth <= 768 ? 90 : 260
+let maxPosition = road.offsetWidth - runnerWidth;
+
+if (maxPosition < 20) maxPosition = 20;
+    
+
+    if (viewMode === "rtl") {
+        position -= 30;
+        if (position < 20) position = 20;
+        characterBox.style.left = position + "px";
+    } else {
+        position += 30;
+        if (position > maxPosition) position = maxPosition;
+        characterBox.style.left = position + "px";
+    }
+}
+function updateDecorDirection() {
+    document.querySelectorAll(".tree, .mountain1, .mountain2").forEach(item => {
+        item.style.animationDirection = viewMode === "rtl" ? "reverse" : "normal";
+    });
+
+    document.querySelectorAll(".carDecor, .animalDecor").forEach(item => {
+        if (viewMode === "rtl") {
+            item.style.animationName = "decorMoveRtl";
+        } else {
+            item.style.animationName = "decorMove";
+        }
+    });
+    
+    road.classList.toggle("rtlRoad", viewMode === "rtl");
+}
+setInterval(() => {
+    const slow = Date.now() - lastTypingTime > 3000;
+
+    document.querySelectorAll(".carDecor, .animalDecor").forEach(item => {
+        item.getAnimations().forEach(anim => {
+     const isMobile = window.innerWidth <= 768;
+
+if (isMobile && viewMode === "rtl") {
+    anim.playbackRate = slow ? 4 : 9;
+}
+else if (isMobile) {
+    anim.playbackRate = slow ? 4 : 9;
+}
+else {
+    anim.playbackRate = slow ? 2 : 6;
+}
+        });
+    });
+}, 500);
+function startGame(){
+    document.getElementById("homeScreen").style.display = "none";
+    document.getElementById("gameScreen").classList.remove("hidden");
+    input.focus();
+}
+
+function showHighScore(){
+    alert("High Score: " + highScore);
 }
